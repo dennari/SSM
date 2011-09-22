@@ -1,0 +1,113 @@
+\documentclass[a4paper,oneside,article]{memoir}
+
+
+
+% LAYOUT
+\usepackage{changepage}
+\setulmarginsandblock{0.7\uppermargin}{0.8\lowermargin}{*}
+
+% MATHS
+\usepackage{amsmath,amsfonts,amssymb,amsbsy,commath,mathtools,calc}
+\mathtoolsset{showonlyrefs,showmanualtags}
+
+\usepackage{subfig}
+% FONTS & LANGUAGE
+\usepackage[usenames,dvipsnames]{color}
+\definecolor{light-gray}{gray}{0.8}
+\usepackage{fontspec,xltxtra,polyglossia}
+\setmainlanguage{english}
+\usepackage[normalem]{ulem} % have underlinings work
+%\defaultfontfeatures{Ligatures=TeX}
+\defaultfontfeatures{Mapping=tex-text}
+
+\setmainfont[Ligatures={Common}, Numbers={OldStyle}]{Linux Libertine O}
+%\setmainfont{Droid Sans}
+%\setsansfont[Scale=MatchLowercase]{Inconsolata}
+\setmonofont[Scale=0.8]{DejaVu Sans Mono}
+
+% PDF SETUP
+\usepackage[unicode,bookmarks, colorlinks, breaklinks,
+pdftitle={T-61.3040: Ex 2},
+pdfauthor={Ville Väänänen},
+pdfproducer={xetex}
+]{hyperref}
+\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=MidnightBlue} 
+
+% TABLES
+\usepackage{booktabs}
+\usepackage{topcapt} 
+\usepackage{rccol}
+\usepackage{tabularx} % requires array
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+\newcolumntype{d}[2]{R[.][.]{#1}{#2}}
+
+\usepackage{titlesec}
+
+%%%%%%%% OMAT KOMENNOT %%%%%%%%%%%%
+
+\usepackage{mymath}
+\usepackage{mylayout}
+
+
+
+% PARAGRAPHS
+%\usepackage{parskip}
+
+% kuvat
+
+\usepackage{listings}
+\usepackage{mcode}
+\lstset{ %
+	%language=Matlab,                % choose the language of the code
+	basicstyle=\footnotesize\ttfamily,% the size of the fonts that are used for the code 
+	numbers=none,                   % where to put the line-numbers
+	numberstyle=\footnotesize\ttfamily,      % the size of the fonts that are usedfor the line-numbers 
+	stepnumber=5,                   % the step between two line-numbers. If it's 1 each line 
+	aboveskip=2\medskipamount,
+	belowskip=2\medskipamount,                                % will be numbered
+	numbersep=-5pt,                  % how far the line-numbers are from the code
+	backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+	showspaces=false,               % show spaces adding particular underscores
+	showstringspaces=false,         % underline spaces within strings
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	frame=l,
+	framesep=0pt,
+	framexleftmargin=2mm,
+	rulecolor=\color{light-gray},	                % adds a frame around the code
+	tabsize=2,	                % sets default tabsize to 2 spaces
+	caption=,
+	captionpos=t,                   % sets the caption-position to bottom
+	breaklines=true,                % sets automatic line breaking
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	emptylines=*1,
+	%title=\lstname,                 % show the filename of files included with
+	                                % also try caption instead of title
+	escapeinside={\%*}{*)},         % if you want to add a comment within your code
+            % if you want to add more keywords to the set
+}
+ 
+\newcommand{\course}{T-61.3040}
+\newcommand{\coursename}{Statistical Signal Modeling}
+\newcommand{\duedate}{\today}
+\newcommand{\studentid}{63527M}
+\renewcommand{\title}{Exercise Round 2}
+\author{Ville Väänänen}
+
+\setsecnumdepth{subsubsection}
+\counterwithout{section}{chapter}
+\pagestyle{headings}
+\makeevenhead{headings}{\course}{\Large\title}{\author / \studentid}
+\makeoddhead{headings}{\course}{\Large\title}{\author / \studentid}
+\makeheadrule{headings}{\textwidth}{\normalrulethickness}
+\makeheadposition{headings}{flushleft}{flushleft}{flushleft}{flushleft}
+\checkandfixthelayout
+\renewcommand{\thesubsubsection}{\thesubsection{\large\scshape\alph{subsubsection}}}
+\newfontfamily\subsubsectionfont[Letters=SmallCaps]{Linux Libertine O}
+\titleformat{\subsection}{\large\scshape}{\alph{subsection} )}{10pt}{}
+%\titleformat{\section}{\Huge}{Round \thesection}{10pt}{}
+\titleformat{\section}{\Large}{Exercise \thesection}{10pt}{}
+
+\everymath{\displaystyle}
+\begin{document}
+	\input{ex2}
+\end{document}

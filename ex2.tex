@@ -1,0 +1,47 @@
+
+\section*{Exercise 5}
+\subsection{}
+The problem can be written in matrix form as follows:
+\begin{align}
+	\v{y} &= \begin{bmatrix} y(0) & \dots & y(M) \end{bmatrix}^T \\
+	\v{b} &= \begin{bmatrix} b(1) & \dots & b(N) \end{bmatrix}^T \\	
+	\v{X} &= \begin{bmatrix} 
+				x_1(0) & \dots & x_N(0)\\
+				\vdots & \ddots & \vdots \\
+				x_1(M) & \dots & x_N(M) 
+%			 \end{bmatrix}^T \\
+	\end{bmatrix} \\
+	\v{y} &= \v{Xb}
+\end{align}
+so that the MSE can be written as
+\begin{align}
+	\mathrm{J}(\v{b})&=\frac{1}{M}(\v{y}-\v{Xb})^T(\v{y}-\v{Xb})
+\end{align}
+To compute the LS-estimate $\hat{\v{y}}$, we need to find the global minimizer
+$\hat{\v{b}}$ of $\mathrm{J}$, which can be
+found by setting its gradient to zero (it's a quadratic form):
+\begin{align}
+	M\nabla\mathrm{J}(\v{b})&=-2\v{X}^T(\v{y}-\v{Xb})\\
+	&=2\v{X}^T\v{X}\v{b}-2\v{X}^T\v{y} \\
+	\Rightarrow \hat{\v{b}} &= (\v{X}^T\v{X})^{-1}\v{X}^T\v{y}\\
+	\Rightarrow \hat{\v{y}} &= \v{X}\left(\v{X}^T\v{X}\right)^{-1}\v{X}^T\v{y}
+\end{align}
+To see that this solution reflects the orthogonality principle:
+\begin{align}
+	\hat{\v{y}}^T\left(\hat{\v{y}}-\v{y}\right)&=\hat{\v{y}}^T\hat{\v{y}}-\hat{\v{y}}^T\v{y}\\
+	&=\v{y}^T\v{X}\left(\v{X}^T\v{X}\right)^{-1}\v{X}^T\v{X}\left(\v{X}^T\v{X}\right)^{-1}\v{X}^T\v{y}-\v{y}^T\v{X}\left(\v{X}^T\v{X}\right)^{-1}\v{X}^T\v{y}\\
+	&=\v{y}^T\v{X}\left(\v{X}^T\v{X}\right)^{-1}\v{X}^T\v{y}-\v{y}^T\v{X}\left(\v{X}^T\v{X}\right)^{-1}\v{X}^T\v{y}=\v{0}
+\end{align}
+
+
+\subsection{}
+We want to find a solution $\hat{\v{y}}=\v{X}\hat{\v{b}}$ that obeys the orthogonality principle:
+\begin{align}
+	\hat{\v{y}}^T\left(\hat{\v{y}}-\v{y}\right)&=\v{0}\\
+	\hat{\v{b}}^T\v{X}^T\v{X}\hat{\v{b}}-\hat{\v{b}}^T\v{X}^T\v{y}&=\v{0}\\
+	\v{X}^T\v{X}\hat{\v{b}}-\v{X}^T\v{y}&=\v{0}\\
+	\hat{\v{b}} &= (\v{X}^T\v{X})^{-1}\v{X}^T\v{y}
+\end{align}
+
+
+
