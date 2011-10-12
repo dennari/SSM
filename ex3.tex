@@ -1,0 +1,11 @@
+
+\section*{Exercise 5}
+
+\begin{align}
+	x(n)-\frac{1}{2}z^{-1}x(n)&=v(n)-\frac{1}{3}z^{-1}v(n)+\frac{1}{4}z^{-2}v(n)\\
+	x(n)&=\frac{1-\frac{1}{3}z^{-1}+\frac{1}{4}z^{-2}}{1-\frac{1}{2}z^{-1}}v(n)\\
+	&=\left(1-\frac{1}{3}z^{-1}+\frac{1}{4}z^{-2}\right)\sum_{k=0}^\infty \frac{1}{2^k}z^{-k}v(n)\\
+	&=\sum_{k=0}^\infty \frac{1}{2^k}\left(v(n-k)-\frac{1}{3}v(n-k-1)+\frac{1}{4}v(n-k-2)\right)  
+\end{align}
+
+
