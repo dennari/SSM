@@ -1,0 +1,74 @@
+
+\section*{Exercise 5}
+\subsection{}
+
+Taking the expectation of the process definition gives (and knowing that $v(n)$ is white with zero mean and unit variance):
+\begin{align}
+	\E{x(n)}&=\E{x(n)-1}=\dots=\E{x(-1)}=0=m_x.
+\end{align}
+
+If the process is ergodic in the mean, the time average should converge to the
+true mean $m_x$. Let's first note the following:
+\begin{align}
+	x(-1)&=0\\
+	x(0)&=v(0)\\
+	x(1)&=v(0)+v(1)\\
+	\vdots \\
+	x(n)&=\sum_{k=0}^n v(k)
+\end{align}
+Now we can write the time average over $N$ instants as
+\begin{align}
+	\hat{m}(N)&=\frac{1}{N}\sum_{n=0}^{N-1}x(n)\\
+	&=\frac{1}{N}\sum_{n=0}^{N-1}\sum_{k=0}^n v(k)\\
+	&=\frac{1}{N}\sum_{n=0}^{N-1}(N-n)v(n)
+\end{align}
+The type of convergence required for ergodicity is mean square convergence:
+\begin{align}
+	\E{\left|\hat{m}(n)-m_x\right|^2}&=\frac{1}{N^2}\E{\left|\sum_{n=0}^{N-1}(N-n)v(n)\right|^2}\\
+	&=\frac{1}{N^2}\sum_{n=0}^{N-1}\sum_{m=0}^{N-1}(N-n)(N-m)\E{\left|v(n)v(m)\right|}\\
+	&=\frac{1}{N^2}\sum_{n=0}^{N-1}(N-n)^2\\
+	&=\frac{\frac{1}{3}N^3+\frac{1}{2}N^2+\frac{1}{6}N}{N^2}\to\infty,\;\text{when }N\to\infty
+\end{align}
+Thus $x(n)$ is not ergodic in the mean.
+
+\subsection{}
+We can rewrite the process as
+\begin{align}
+	y(n)&=0.8y(n-1)+v(n)
+	=0.8^ny(0)+\sum_{k=0}^{n-1}0.8^kv(n-k)
+\end{align}
+In order for $y(n)$ to be ergodic in the mean the expected value
+\begin{align}
+	\E{y(n)}&=0.8^n\E{y(0)}
+\end{align}
+must be constant. Clearly this happens only if $\E{y(0)}=0$, which we now assume.
+To see if the process is WSS, the autocovariance $c_y(n,n+l)$ (which is equal to the autocorrelation
+in this case) needs to be 
+a function of only the lag $l$:
+
+\begin{align}
+	c_y(n,n+l)&=\E{y(n)y^*(n+l)}=\E{y(n)\left(0.8^ly^*(n)+\sum_{k=0}^{l-1}0.8^kv^*(n+l-k)\right)}
+\end{align}
+Now if we assume that the noise is uncorrelated with the signal (a fair assumption), we get
+\begin{align}
+	c_y(n,n+l)&=0.8^l\E{y(n)y^*(n)}=0.8^l\E{\left|y(n)\right|^2}
+\end{align}
+which depends only on the lag if the process has constant variance $\E{\left|y(n)\right|^2}=\sigma_y^2$. I couldn't find
+any other way to prove that this is the case than noting that the process we're
+looking at is a MA(1) process which is WSS (assuming it's stable) and thus has to have
+an autocorrelation function that depends only on the lag.
+
+
+Now according to one of the ergodicity theorems, a sufficient condition for a WSS process
+to be ergodic in the mean is that the autocovariance sequence converges to zero as the lag
+approaches infinity. With the above WSS assumption (and assuming that the process is stable, i.e $\sigma_y^2<\infty$), we get:
+\begin{align}
+	\lim_{l\to\infty}c_y(l)=\lim_{l\to\infty}0.8^l\sigma_y^2=0
+\end{align}
+Thus $y(n)$ is ergodic in the mean.
+
+
+
+
+
+

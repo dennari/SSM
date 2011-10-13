@@ -1,0 +1,51 @@
+
+\section*{Exercise 5}
+
+Although it was not specified, we assume that $v(n)$ is white.
+
+\subsection{}
+The variance of $x(n)$ follows easily, as the variance of the sum
+of uncorrelated variables is the sum of their variances and $\var{ax}=a^2\var{x}$
+if $a$ is constant. We were also told that $\var{v(n)}=1$. We then get
+\begin{align}
+	\var{x(n)}&=b(0)\var{v(n)}+b(1)\var{v(n-1)}+b(2)\var{v(n-1)}\\
+	&=b(0)^2+b(1)^2+b(2)^2\\
+	&=1.53
+\end{align}
+
+
+\subsection{}
+
+The result of filtering an input $v(n)$ with a LSI filter
+can be computed from the convolution of the filter's impulse
+response and the input:
+
+\begin{align}
+	x(n)&=h(n)*v(n)	
+\end{align}
+The impulse response of the MA-process is finite and
+can be easily read from the coefficients. So we get:
+
+\begin{align}
+	x(n)&=\sum_{m=-\infty}^\infty \left(b(0)\delta(n-m)+b(1)\delta(n-1-m)+b(2)\delta(n-2-m)\right)v(m)	
+\end{align}
+
+Now if we think of filtering $x(n)$ again with $h(n)$, we could just
+take the convolution again. However as the convolution operation
+corresponds to multiplication of z-transforms, we get:
+
+\begin{align}
+	Y(z)=H(z)H(z)V(Z)=\left(b(0)+b(1)z^{-1}+b(2)z^{-2}\right)^2V(z)	
+\end{align}
+From here we can see that the result is a MA(4) process.
+
+\subsection{}
+
+We can simply calculate the difference equation and then
+take the variance as in A):
+
+\begin{align}
+	y(n)&=\sum_{l=0}^2\sum_{m=0}^2 b(l)b(m)v(n-m-l)\\
+	\Rightarrow \var{y(n)} &= \sum_{l=0}^2\sum_{m=0}^2 b(l)^2b(m)^2=\sum_{l=0}^2b(l)^2 \sum_{m=0}^2 b(m)^2\\
+	&=\var{x(n)}^2=2.3409	
+\end{align}
