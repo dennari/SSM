@@ -1,0 +1,68 @@
+
+\section*{Exercise 5}
+
+\subsection{}
+In the autocorrelation method we assume that the (real valued) signal is zero outside
+the observed interval and the apply the Prony's method to determine the coefficients.
+In this case where $p=1$, Prony's normal equation is
+\begin{align}
+		a(1)r_x(0)&=-r_x(1),\;k=1\\
+		\Leftrightarrow a(1)&=-\frac{r_x(1)}{r_x(0)}
+\end{align}
+For the autocorrelation values we get:
+\begin{align}
+	r_x(k)&=\sum_{n=k}^1 x(n)x(n-k)	
+\end{align}
+giving
+\begin{align}
+	r_x(0)&=x(0)^2+x(1)^2\\
+	r_x(1)&=x(1)x(0)	
+\end{align}
+Then
+\begin{align}
+	a(1)&=-\frac{x(1)x(0)}{x(0)^2+x(1)^2}	
+\end{align}
+which is defined as long as $x(0)\neq 0 $ or $x(1)\neq 0 $ (assumed in the exercise).  
+According to the book we should have $b(0)=\sqrt{\varepsilon_1}$
+where 
+\begin{align}
+	\varepsilon_1&=r_x(0)+a(1)r_x(1)	
+\end{align}
+is the minimum error. Thus we get
+\begin{align}
+	b(0)&=\sqrt{\frac{x(0)^4+x(0)^2x(1)^2+x(1)^4}{x(0)^2+x(1)^2}}	
+\end{align}
+The filter is stable if $\abs{a(1)}<1$, i.e
+\begin{align}
+		x(1)x(0) &< x(0)^2+x(1)^2
+\end{align}
+
+\subsection{}
+
+In the covariance method we don't have to make any assumptions
+of the values of the signal outside the observed interval, but we
+modify the error that we're minimizing to include only terms we can
+calculate. Similarly to the previous case we get
+
+ \begin{align}
+		a(1)&=-\frac{r_x(1,0)}{r_x(1,1)}
+\end{align}
+For the autocorrelation values we get:
+\begin{align}
+	r_x(k,l)&=x(1-l)x(1-k)	
+\end{align}
+giving
+\begin{align}
+	r_x(1,0)&=x(0)x(1)\\
+	r_x(1,1)&=x(0)^2	
+\end{align}
+and
+ \begin{align}
+		a(1)&=-\frac{x(1)}{x(0)}
+\end{align}
+which is defined if $x(0)\neq 0$.
+In this case we set $b(0)=x(0)$, so that our model is equal to the observation at time $0$.
+This filter is stable if $\abs{x(1)}<\abs{x(0)}$.
+
+
+

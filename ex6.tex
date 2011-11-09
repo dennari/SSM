@@ -1,0 +1,59 @@
+
+\section*{Exercise 5}
+
+\subsection{}
+The transfer function of an ARMA(1,1) process is
+\begin{align}
+	H(z)=\frac{b(0)+b(1)z^{-1}}{1+a(1)z^{-1}}		
+\end{align}
+and by taking the inverse transformation we obtain
+the impulse response
+\begin{align}
+	h(n)=b(0)(-1)^na(1)^nu(n)+b(1)(-1)^{n-1}a(1)^{n-1}u(n-1)	
+\end{align}
+where $u(n)$ is the unit step. This gives us the asked expressions:
+\begin{align}
+	h(0)&=b(0)\\
+	h(1)&=-b(0)a(1)+b(1)	
+\end{align}
+
+\subsection{}
+
+First of all, from the given expression for the autocorrelation sequence
+we can deduce that the coefficients must be real (the autocorrelation sequence is symmetric).
+The Yule-Walker equations for a real ARMA(1,1) process are
+\begin{align}
+	\begin{bmatrix}
+		r_x(0) & r_x(-1)\\
+		r_x(1) & r_x(0) 
+	\end{bmatrix}
+	&=
+	\sigma_v^2
+	\begin{bmatrix}
+		b(0)h(0) + b(1)h(1)\\
+		b(1)h(0)
+	\end{bmatrix}\\
+	&=
+	\sigma_v^2
+	\begin{bmatrix}
+		b(0)^2 + b(1)^2 - b(0)b(1)a(1)\\
+		b(1)b(0)
+	\end{bmatrix}	
+\end{align}
+
+Thus we have a pair of nonlinear equations for the three unknown coefficients.
+Assuming that the input noise variance is unity and $a(1)=0$ (as there are more variables than equations), 
+we have
+\begin{align}
+	b(0)^2+b(1)^2&=0.2\\
+	b(1)b(0)&=0.08
+	\label{b}
+\end{align}
+Thus one solution for the parameters is 
+\begin{align}
+	a(1)&=0\\
+	b(0)&=0.4\\
+	b(1)&=0.1
+\end{align}
+
+
