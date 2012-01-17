@@ -1,0 +1,75 @@
+
+\section*{Exercise 5}
+
+\subsection{}
+We are looking for the optimum FIR filter
+\begin{align}
+	W(z)=w(1)+w(2)z^-1	
+\end{align}
+for estimating $d(n)$ by filtering $x(n)=d(n)+v(n)$ where $d(n)$ and $v(n)$
+are real and uncorrelated and the autocorrelations are 
+\begin{align}
+	r_d(k)&=0.375(-0.2)^{\abs{k}}\\
+	r_v(k)&=\delta(k)\\
+	r_x(k)&=r_d(k)+r_v(k)
+\end{align}
+From the uncorrelatedness of the zero-mean white noise it follows that the cross-correlation
+$r_{dx}(k)$ is just $r_{d}(k)$. This is all we need to form the Wiener-Hopf equations
+for solving the coefficients:
+
+\begin{align}
+	\begin{bmatrix}
+		r_x(0)&r_x(1)\\
+		r_x(1)&r_x(0)
+	\end{bmatrix}	
+	\begin{bmatrix}
+		w(1)\\
+		w(2)
+	\end{bmatrix}&=	
+	\begin{bmatrix}
+		r_d(0)\\
+		r_d(1)
+	\end{bmatrix}\\
+\Leftrightarrow	
+	\begin{bmatrix}
+		0.375+1&-0.2*0.375\\
+		-0.2*0.375&0.375+1
+	\end{bmatrix}	
+	\begin{bmatrix}
+		w(1)\\
+		w(2)
+	\end{bmatrix}&=	
+	\begin{bmatrix}
+		0.375\\
+		-0.2*0.375
+	\end{bmatrix}\\		
+\Leftrightarrow	
+	\begin{bmatrix}
+		w(1)\\
+		w(2)
+	\end{bmatrix}&=
+	\frac{1}{377}	
+	\begin{bmatrix}
+		102\\
+		-15
+	\end{bmatrix}\approx		
+	\begin{bmatrix}
+	    0.2706\\
+	   -0.0398
+	\end{bmatrix}		
+\end{align}
+
+\subsection{}
+\begin{align}
+	\E{\left(d(n)-\hat{d}(n)\right)^2}&=r_d(0)-w(1)r_d(0)-w(2)r_d(1)\\
+	&=\frac{102}{377}\approx 0.2706	
+\end{align}
+\subsection{}
+In the case $\hat{d}(n)=x(n)$ we get
+\begin{align}
+	\E{\left(d(n)-\hat{d}(n)\right)^2}=\E{v(n)^2}=\text{Var}\left[v(n)\right]=1\\
+\end{align}
+
+
+
+

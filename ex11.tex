@@ -1,0 +1,99 @@
+\section*{Exercise 5}
+
+We have a WSS process with the autocorrelation sequence
+\begin{align}
+	r_x(k)&=a^{\abs{k}}\\
+	\abs{a} &< 1,\;a\in\R	
+\end{align}
+
+\subsection{}
+The $2\times 2$ autocorrelation matrix is
+\begin{align}
+	R_x&=
+	\begin{bmatrix}
+		1&a\\
+		a&1
+	\end{bmatrix}	
+\end{align}
+and the eigenvalues and vectors are given by the following equations:
+
+\begin{align}
+	R_x\begin{bmatrix}
+		1\\
+		1
+	\end{bmatrix}&=
+	\begin{bmatrix}
+		1+a\\
+		1+a
+	\end{bmatrix}=
+	\left(1+a\right)
+	\begin{bmatrix}
+		1\\
+		1
+	\end{bmatrix}\\
+	R_x\begin{bmatrix}
+		1\\
+		-1
+	\end{bmatrix}&=
+	\begin{bmatrix}
+		1-a\\
+		a-1
+	\end{bmatrix}=
+	\left(1-a\right)
+	\begin{bmatrix}
+		1\\
+		-1
+	\end{bmatrix}.	
+\end{align}
+
+As the eigenvectors are usually constrained to have unit length,
+we get:
+
+\begin{align}
+	\lambda_1&=1+a\\
+	\lambda_2&=1-a\\
+	\v{v}_1&=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \end{bmatrix}^T\\
+	\v{v}_2&=\frac{1}{\sqrt{2}}\begin{bmatrix} 1 & -1 \end{bmatrix}^T
+	\label{tablelabel}
+\end{align}
+
+
+\subsection{}
+A property of the eigenvalues of the autocorrelation called the
+\emph{eigenvalue extremal property} states that the eigenvalues
+are bounded by the minimum and maximum of the power-spectrum. It can apparently
+also be shown that the largest eigenvalue approaches the maximum
+of the power spectrum as the size of the autocorrelation matrix approaches infinity.
+In other words, the asymptotic value of $\lambda_{max}$ as $p\to\infty$ is
+the maximum of the power spectrum.
+
+For the power spectrum we get:
+\begin{align}
+	P(e^{i\omega})&=\sum_{k=-\infty}^{\infty}a^{\abs{k}}e^{-ik\omega}\\
+	&=\sum_{k=0}^{\infty}\left(ae^{-i\omega}\right)^k+\sum_{k=0}^{\infty}\left(ae^{i\omega}\right)^k-1\\
+	&=\frac{1}{1-ae^{-i\omega}}+\frac{1}{1-ae^{i\omega}}-1\\
+	&=\frac{1-a^2}{1-2a\cos(\omega)+a^2}
+\end{align}
+so that the maximum is when $\cos(\omega)=1 \; \& \; a \ge 0 $ or $\cos(\omega)=-1 \; \& \; a < 0$.
+Now the maximum can be written as
+\begin{align}
+	\max P(e^{i\omega})&=\lim_{p\to\infty}\lambda_{max}\equiv \lambda_{max}=\frac{1+\abs{a}}{1-\abs{a}}
+	\label{'}
+\end{align}
+
+\subsection{}
+
+In \emph{Hayes} it is proved that the LMS algorithm converges in the mean
+whenever the step size $\mu$ satisfies the condition
+
+\begin{align}
+		0 < \mu < \frac{2}{\lambda_{max}} &= \frac{2\left(1-\abs{a}\right)}{1+\abs{a}}=\mu_{max}
+\end{align}
+We can now see that as $\abs{a}\to 1$, $\mu_{max}\to 0$ and the step size
+must be made smaller and smaller for the algorithm to converge. The closer
+$\abs{a}$ is to unity the more the original signal resembles a constant signal, the
+the more the power spectrum looks like a delta function and the more ill-conditioned the matrix $R_x$ becomes.
+
+
+
+
